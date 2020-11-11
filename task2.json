@@ -1,0 +1,25 @@
+{
+  "variables": {
+    "aws_region": "us-east-1"
+  },
+  "builders": [{
+    "ami_name": "training-amazon-linux-{{isotime | clean_ami_name}}",
+    "ami_description": "Linux-AMI",
+    "instance_type": "t2.micro",
+    "name": "amazon-linux-ami",
+    "region": "{{user `aws_region`}}",
+    "type": "amazon-ebs",
+    "source_ami_filter": {
+      "filters": {
+        "virtualization-type": "hvm",
+        "architecture": "x86_64",
+        "name": "*amzn-ami-hvm-*",
+        "block-device-mapping.volume-type": "gp2",
+        "root-device-type": "ebs"
+      },
+      "owners": ["amazon"],
+      "most_recent": true
+    },
+    "ssh_username": "ec2-user"
+  }]
+}
