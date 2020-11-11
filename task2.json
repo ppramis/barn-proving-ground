@@ -37,6 +37,14 @@
                 "sudo yum install httpd -y",
                 "sudo service httpd start",
                 "sudo chkconfig httpd on"
+			    "sudo yum install xfsprogs -y"
+                "sudo mkfs -t xfs /dev/xvdf"
+			    "sudo mkdir /data"
+			    "sudo mount /dev/xvdf /data"
+			    "sudo chown -R ec2-user:ec2-user /data"
+			    "sudo su" 
+			    "echo '/dev/xvdf  /data  xfs  defaults,nofail  0  2" >> /etc/fstab'"
+			    "exit"
         ]
    }
   ]  
