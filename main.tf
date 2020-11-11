@@ -46,14 +46,7 @@ resource "aws_instance" "barn-instance" {
 
   user_data = <<-DATA
               #!/bin/bash
-			  sudo yum install xfsprogs -y
-              sudo mkfs -t xfs /dev/xvdf
-			  sudo mkdir /data
-			  sudo mount /dev/xvdf /data
-			  sudo chown -R ec2-user:ec2-user /data
-			  sudo su 
-			  echo "/dev/xvdf  /data  xfs  defaults,nofail  0  2" >> /etc/fstab
-			  exit
+			  echo ""
               DATA
 
   tags = {

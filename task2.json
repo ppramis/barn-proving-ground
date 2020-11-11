@@ -34,7 +34,7 @@
        "type": "shell",
        "inline": [
                 "sudo yum update -y",
-                "sudo yum install httpd -y",
+                "sudo yum install httpd24 -y",
                 "sudo service httpd start",
                 "sudo chkconfig httpd on"
 			    "sudo yum install xfsprogs -y"
@@ -45,6 +45,8 @@
 			    "sudo su" 
 			    "echo '/dev/xvdf  /data  xfs  defaults,nofail  0  2" >> /etc/fstab'"
 			    "exit"
+				"sudo mkdir /data/www/html"
+				"sudo chmod 0775 /data/www/html"
         ]
    }
   ]  
