@@ -9,6 +9,13 @@
     "name": "amazon-linux-ami",
     "region": "{{user `aws_region`}}",
     "type": "amazon-ebs",
+    "ami_block_device_mappings": [
+      {
+        "device_name": "/dev/sdf",
+		"volume_type": "gp2",
+        "volume_size": "10"
+      }
+    ],
     "source_ami_filter": {
       "filters": {
         "virtualization-type": "hvm",
@@ -21,5 +28,16 @@
       "most_recent": true
     },
     "ssh_username": "ec2-user"
-  }]
+  }],
+  "provisioners": [
+   {
+       "type": "shell",
+       "inline": [
+                "sudo yum update -y",
+                "sudo yum install httpd -y",
+                "sudo service httpd start",
+                "sudo chkconfig httpd on"
+        ]
+   }
+  ]  
 }
