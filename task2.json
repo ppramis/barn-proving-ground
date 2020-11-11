@@ -3,7 +3,7 @@
     "aws_region": "us-east-1"
   },
   "builders": [{
-    "ami_name": "training-amazon-linux-{{isotime | clean_ami_name}}",
+    "ami_name": "barn-amazon-linux-{{isotime | clean_resource_name}}",
     "ami_description": "Linux-AMI",
     "instance_type": "t2.micro",
     "name": "amazon-linux-ami",
