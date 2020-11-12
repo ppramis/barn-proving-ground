@@ -34,6 +34,8 @@
        "type": "shell",
        "inline": [
                 "sudo yum update -y",
+				"sudo rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm"
+				"sudo yum -y install puppet"
                 "sudo yum install httpd24 -y",
                 "sudo service httpd start",
                 "sudo chkconfig httpd on"
@@ -45,8 +47,11 @@
 			    "sudo su" 
 			    "echo '/dev/xvdf  /data  xfs  defaults,nofail  0  2" >> /etc/fstab'"
 			    "exit"
-				"sudo mkdir /data/www/html"
+				"sudo mkdir -p /data/www/html"
 				"sudo chmod 0775 /data/www/html"
+				"echo 'This is the new index.html page at /data/www/html.' > /data/www/html/index.html
+				"sudo sed -i 's/\/var\/www\/html/\/data\/www\/html/g' /etc/httpd/conf/httpd.conf"
+				"sudo service httpd restart"
         ]
    }
   ]  
